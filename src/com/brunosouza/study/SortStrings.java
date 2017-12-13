@@ -16,7 +16,8 @@ public class SortStrings {
 		names.add("Ana Julia");
 		
 		Comparator<String> comparatorBySize = new ComparatorBySize();
-		Collections.sort(names, comparatorBySize);
+		names.sort(comparatorBySize);
+		
 		
 		for (String name : names) {
 			System.out.println(name);
