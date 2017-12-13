@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Comparator;
 import java.util.List;
+import java.util.function.Consumer;
 
 public class SortStrings {
 	public static void main(String[] args) {
@@ -18,10 +19,8 @@ public class SortStrings {
 		Comparator<String> comparatorBySize = new ComparatorBySize();
 		names.sort(comparatorBySize);
 		
-		
-		for (String name : names) {
-			System.out.println(name);
-		}
+		Consumer<String> consumer = new PrintOnLine();
+		names.forEach(consumer);
 	}
 }
 
@@ -35,6 +34,14 @@ class ComparatorBySize implements Comparator<String>{
 		if(s1.length() > s2.length())
 			return 1;
 		return 0;
+	}
+}
+
+class PrintOnLine implements Consumer<String>{
+
+	@Override
+	public void accept(String s) {
+		System.out.println(s);
 	}
 }
 
